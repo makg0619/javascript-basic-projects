@@ -1,0 +1,14 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.container p {
+  background-color: #c7d4fe;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 1px 2px 3px 16px #f1f1f1;
+  margin-bottom: 30px;
+}
