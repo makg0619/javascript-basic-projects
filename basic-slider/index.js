@@ -42,7 +42,7 @@ random.addEventListener('click', displayrandomData);
 
 
 function displayData() {
-  currentData(currentIndex);
+  currentData();
 }
 
 function displayprevData() {
@@ -50,7 +50,7 @@ function displayprevData() {
   if(currentIndex < 0 ) {
     currentIndex = sliderData.length - 1;
   }
-  currentData(currentIndex);
+  currentData();
 }
 
 function displaynextData() {
@@ -59,15 +59,15 @@ function displaynextData() {
     console.log('lastelement');
     currentIndex = 0;
   }
-  currentData(currentIndex);
+  currentData();
 }
 
 function displayrandomData() {
   currentIndex = Math.floor(Math.random() * 4);
-  currentData(currentIndex);
+  currentData();
 }
 
-function currentData(currentIndex) {
+function currentData() {
   let currentData = sliderData[currentIndex];
   img.src = currentData.img;
   designation.innerText = currentData.desig;
