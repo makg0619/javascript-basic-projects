@@ -1,0 +1,35 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.carousel-container {
+  padding: 20px;
+  box-shadow: 1px 1px 11px 3px #7375cf;
+  margin-top: 20px;
+}
+
+.mid-container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.mid-container img {
+  height: 400px;
+}
+
+#numbering {
+  font-size: 80px;
+  font-weight: 800;
+}
+
+#designation {
+  font-size: 16px;
+  font-weight: 800;
+}
