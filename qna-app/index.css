@@ -1,0 +1,58 @@
+.container {
+  padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.answer {
+  margin: 10px 0;
+  padding: 20px;
+  background-color: #e8e8e8;
+  display: none;
+}
+
+.shown .answer {
+  display: block;
+}
+
+.accordion {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: auto;
+}
+.accordion h3 {
+  border: 2px solid #efff00;
+  border-radius: 3px;
+  position: relative;
+  margin: 10px 0;
+  padding: 20px;
+  color: black;
+  cursor: pointer;
+}
+.accordion h3::after, .accordion h3::before {
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  margin-top: -5px;
+  right: 30px;
+  transition: border-top-color 150ms;
+}
+.accordion h3::after {
+  border-top-color: white;
+  border-width: 10px;
+  margin-right: -10px;
+}
+.accordion h3::before {
+  border-top-color: #efff00;
+  border-width: 13px;
+  margin-right: -13px;
+}
+.accordion h3:hover {
+  background-color: #efff00;
+  color: white;
+}
