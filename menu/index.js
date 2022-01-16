@@ -87,7 +87,30 @@ let btnContainer = document.querySelector('.btn-container');
 
 window.addEventListener("DOMContentLoaded", function(){
   handleDisplay(menu);
-  
+  handleDisplayCategories()
+
+})
+
+function handleDisplay(menuItems) {
+  let displayItems = menuItems.map((item) => {
+    return `<article class="menu-item">
+    <img src=${item.img} alt="menu item" class="photo" />
+    <div class="item-info">
+      <header>
+        <h4>${item.title}</h4>
+        <h4 class="price">${item.price}</h4>
+      </header>
+      <p class="item-text">
+      ${item.desc}
+      </p>
+    </div>
+  </article>`;
+  })
+  displayItems = displayItems.join("");
+  sectionContainer.innerHTML = displayItems;
+}
+
+function handleDisplayCategories(){
   let btnCategorys = menu.reduce((values, item)=>{
     if(!values.includes(item.category)){
       values.push(item.category);
@@ -115,24 +138,4 @@ window.addEventListener("DOMContentLoaded", function(){
       handleDisplay(filterdItem);
     })
   })
-
-})
-
-function handleDisplay(menuItems) {
-  let displayItems = menuItems.map((item) => {
-    return `<article class="menu-item">
-    <img src=${item.img} alt="menu item" class="photo" />
-    <div class="item-info">
-      <header>
-        <h4>${item.title}</h4>
-        <h4 class="price">${item.price}</h4>
-      </header>
-      <p class="item-text">
-      ${item.desc}
-      </p>
-    </div>
-  </article>`;
-  })
-  displayItems = displayItems.join("");
-  sectionContainer.innerHTML = displayItems;
 }
