@@ -71,14 +71,51 @@ const menu = [
     img: "./images/item-9.jpeg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
+  {
+    id: 10,
+    title: "Awesome Dinner",
+    category: "dinner",
+    price: 36.99,
+    img: "./images/item-10.jpeg",
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  }
 ];
 
 let sectionContainer = document.querySelector('.section-center');
-let filtersBtns = document.querySelectorAll('.filter-btn');
+let btnContainer = document.querySelector('.btn-container');
 
 
 window.addEventListener("DOMContentLoaded", function(){
   handleDisplay(menu);
+  
+  let btnCategorys = menu.reduce((values, item)=>{
+    if(!values.includes(item.category)){
+      values.push(item.category);
+    }
+    return values;
+  }, ['all']);
+  
+  const displayBtnCategory = btnCategorys.map((btnCategory)=>{
+    return `<button type="button" class="filter-btn" data-id=${btnCategory}>${btnCategory}</button>`
+  }).join("");
+  btnContainer.innerHTML = displayBtnCategory;
+  
+  let filtersBtns = document.querySelectorAll('.filter-btn');
+  filtersBtns.forEach((filterbtn) => {
+    filterbtn.addEventListener('click', function(e){
+      const category = e.currentTarget.dataset.id;
+      let filterdItem = menu.filter((filterMenu)=>{
+        if(filterMenu.category === category) { 
+          return filterMenu;
+        }
+        else if(category === 'all') {
+          return filterMenu;
+        }
+      })
+      handleDisplay(filterdItem);
+    })
+  })
+
 })
 
 function handleDisplay(menuItems) {
@@ -99,51 +136,3 @@ function handleDisplay(menuItems) {
   displayItems = displayItems.join("");
   sectionContainer.innerHTML = displayItems;
 }
-
-// filtersBtns.forEach((filterbtn)=> {
-//   filterbtn.addEventListener('click', function(e){
-//     if(e.currentTarget.dataset.id === 'breakfast') {
-//       let filterdItem = menu.filter((filterMenu) => {
-//         if(filterMenu.category === 'breakfast') {
-//           return filterMenu;
-//         }
-//       })
-//       handleDisplay(filterdItem);
-//     }
-//     if(e.currentTarget.dataset.id === 'lunch') {
-//       let filterdItem = menu.filter((filterMenu) => {
-//         if(filterMenu.category === 'lunch') {
-//           return filterMenu;
-//         }
-//       })
-//       handleDisplay(filterdItem);
-//     }
-//     if(e.currentTarget.dataset.id === 'shakes') {
-//       let filterdItem = menu.filter((filterMenu) => {
-//         if(filterMenu.category === 'shakes') {
-//           return filterMenu;
-//         }
-//       })
-//       handleDisplay(filterdItem);
-//     }
-//     if(e.currentTarget.dataset.id === 'all') {
-//       handleDisplay(menu);
-//     }
-//   })
-// })
-
-
-filtersBtns.forEach((filterbtn) => {
-  filterbtn.addEventListener('click', function(e){
-    const category = e.currentTarget.dataset.id;
-    let filterdItem = menu.filter((filterMenu)=>{
-      if(filterMenu.category === category) { 
-        return filterMenu;
-      }
-      else if(category === 'all') {
-        return filterMenu;
-      }
-    })
-    handleDisplay(filterdItem);
-  })
-})
